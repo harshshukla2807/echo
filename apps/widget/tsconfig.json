@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@workspace/ui/*": ["../../packages/ui/src/*"],
-      "@workspace/math/*": ["../../packages/math/src/*"]
+      "@workspace/ui": ["../../packages/ui"],
+      "@workspace/ui/*": ["../../packages/ui/src/*"]
     },
     "plugins": [
       {
@@ -17,6 +17,7 @@
     "next-env.d.ts",
     "next.config.ts",
     "**/*.ts",
+    "**/*.d.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
   ],
