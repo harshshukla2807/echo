@@ -5,7 +5,8 @@
     "paths": {
       "@/*": ["./*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"],
-      "@workspace/math/*": ["../../packages/math/src/*"]
+      "@workspace/math/*": ["../../packages/math/src/*"],
+      "@workspace/backend/*": ["../../packages/backend/convex/*"],
     },
     "plugins": [
       {
