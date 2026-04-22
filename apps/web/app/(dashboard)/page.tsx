@@ -20,9 +20,9 @@ export default function Page() {
           <UserButton />
           <Button onClick={() => addUser()}>Add User</Button>
           <OrganizationSwitcher/>
-          <div className="mx-auto w-full max-w-sm">
+          {/* <div className="mx-auto w-full max-w-sm">
             {JSON.stringify(users, null, 2)}
-          </div>
+          </div> */}
         </div>
     </>
   )

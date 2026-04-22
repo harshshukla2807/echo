@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isPublicRoute = createRouteMatcher([
@@ -6,36 +6,29 @@ const isPublicRoute = createRouteMatcher([
   "/sign-up(.*)",
 ]);
 
-// const isOrgFreeRoute = createRouteMatcher([
-//   "/sign-in(.*)",
-//   "/sign-up(.*)",
-//   "/org-selection(.*)"
-// ]);
+const isOrgFreeRoute = createRouteMatcher([
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/org-selection(.*)"
+]);
 
-export default clerkMiddleware(async (auth, req) => {
+export default clerkMiddleware(async (auth:any, req: NextRequest) => {
   const { userId, orgId } = await auth();
-  
-  
-//   console.log("Middleware auth check:", {
-//     path: req.nextUrl.pathname,
-//     userId,
-//     orgId,
-//   });
 
   if (!isPublicRoute(req)) {
     await auth.protect();
   }
 
-//   if (userId && !orgId && !isOrgFreeRoute(req)) {
-//     const searchParams = new URLSearchParams({ redirectUrl: req.url });
+  if (userId && !orgId && !isOrgFreeRoute(req)) {
+    const searchParams = new URLSearchParams({ redirectUrl: req.url });
 
-//     const orgSelection = new URL(
-//       `/org-selection?${searchParams.toString()}`,
-//       req.url,
-//     );
+    const orgSelection = new URL(
+      `/org-selection?${searchParams.toString()}`,
+      req.url,
+    );
 
-//     return NextResponse.redirect(orgSelection);
-//   }
+    return NextResponse.redirect(orgSelection);
+  }
 });
 
 export const config = {
