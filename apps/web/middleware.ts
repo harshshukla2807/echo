@@ -1,16 +1,41 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { NextResponse } from 'next/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isPublicRoute= createRouteMatcher([
-      "/sign-in(.*)",
-      "/sign-up(.*)"
-])
+const isPublicRoute = createRouteMatcher([
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+]);
 
-export default clerkMiddleware(async(auth,req)=>{
+// const isOrgFreeRoute = createRouteMatcher([
+//   "/sign-in(.*)",
+//   "/sign-up(.*)",
+//   "/org-selection(.*)"
+// ]);
 
-      
-      if(!isPublicRoute(req)){
-            await auth.protect();
-      }
+export default clerkMiddleware(async (auth, req) => {
+  const { userId, orgId } = await auth();
+  
+  
+//   console.log("Middleware auth check:", {
+//     path: req.nextUrl.pathname,
+//     userId,
+//     orgId,
+//   });
+
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+  }
+
+//   if (userId && !orgId && !isOrgFreeRoute(req)) {
+//     const searchParams = new URLSearchParams({ redirectUrl: req.url });
+
+//     const orgSelection = new URL(
+//       `/org-selection?${searchParams.toString()}`,
+//       req.url,
+//     );
+
+//     return NextResponse.redirect(orgSelection);
+//   }
 });
 
 export const config = {
@@ -20,4 +45,4 @@ export const config = {
     // Always run for API routes
     '/(api|trpc)(.*)',
   ],
-};
+}
