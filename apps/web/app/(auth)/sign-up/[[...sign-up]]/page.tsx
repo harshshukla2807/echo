@@ -1,10 +1,7 @@
-import { SignUp } from '@clerk/nextjs'
-import React from 'react'
+import { SignUpView } from "@/modules/auth/ui/views/sign-up-view";
 
-const page = () => {
-  return (
-    <div><SignUp/></div>
-  )
-}
-
-export default page
+const Page = () => {
+  return <SignUpView />
+};
+ 
+export default Page;
