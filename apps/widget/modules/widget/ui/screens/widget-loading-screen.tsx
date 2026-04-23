@@ -40,7 +40,7 @@ export const WidgetLoadingScreen = ({ organizationId }: { organizationId: string
     setLoadingMessage("Verifying organization...");
 
     validateOrganization({ organizationId })
-      .then((result: { valid: any; reason: any; }) => {
+      .then((result) => {
         if (result.valid) {
           setOrganizationId(organizationId);
           setStep("session");
