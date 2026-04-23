@@ -23,7 +23,7 @@ export const useVapi = () => {
 //       return;
 //     }
 
-    const vapiInstance = new Vapi("768619f1-a615-464b-8e84-e831b4bd0113");
+    const vapiInstance = new Vapi("");
     setVapi(vapiInstance);
 
     vapiInstance.on("call-start", () => {
@@ -75,7 +75,7 @@ export const useVapi = () => {
     setIsConnecting(true);
 
     if (vapi) {
-      vapi.start("e2233ef4-cc71-4284-a76f-ae7c7dd838e3");
+      vapi.start("");
     }
   }
 
