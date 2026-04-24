@@ -1,5 +1,6 @@
 import { atom } from "jotai";
-import { atomFamily, atomWithStorage } from "jotai/utils";
+import { atomWithStorage } from "jotai/utils";
+import { atomFamily } from "jotai-family";
 import { WidgetScreen } from "@/modules/widget/types";
 import { CONTACT_SESSION_KEY } from "../constants";
 import { Id } from "@workspace/backend/_generated/dataModel";
