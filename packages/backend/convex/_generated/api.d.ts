@@ -10,11 +10,13 @@
 
 import type * as lib_extractTextContent from "../lib/extractTextContent.js";
 import type * as private_conversations from "../private/conversations.js";
+import type * as private_files from "../private/files.js";
 import type * as private_messages from "../private/messages.js";
 import type * as public_contactSessions from "../public/contactSessions.js";
 import type * as public_conversations from "../public/conversations.js";
 import type * as public_messages from "../public/messages.js";
 import type * as public_organizations from "../public/organizations.js";
+import type * as system_ai_rag from "../system/ai/rag.js";
 import type * as system_ai_supportAgent from "../system/ai/supportAgent.js";
 import type * as system_ai_tools_escalateConversation from "../system/ai/tools/escalateConversation.js";
 import type * as system_ai_tools_resolveConversation from "../system/ai/tools/resolveConversation.js";
@@ -31,11 +33,13 @@ import type {
 declare const fullApi: ApiFromModules<{
   "lib/extractTextContent": typeof lib_extractTextContent;
   "private/conversations": typeof private_conversations;
+  "private/files": typeof private_files;
   "private/messages": typeof private_messages;
   "public/contactSessions": typeof public_contactSessions;
   "public/conversations": typeof public_conversations;
   "public/messages": typeof public_messages;
   "public/organizations": typeof public_organizations;
+  "system/ai/rag": typeof system_ai_rag;
   "system/ai/supportAgent": typeof system_ai_supportAgent;
   "system/ai/tools/escalateConversation": typeof system_ai_tools_escalateConversation;
   "system/ai/tools/resolveConversation": typeof system_ai_tools_resolveConversation;
