@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as lib_extractTextContent from "../lib/extractTextContent.js";
 import type * as private_conversations from "../private/conversations.js";
 import type * as private_messages from "../private/messages.js";
 import type * as public_contactSessions from "../public/contactSessions.js";
@@ -28,6 +29,7 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  "lib/extractTextContent": typeof lib_extractTextContent;
   "private/conversations": typeof private_conversations;
   "private/messages": typeof private_messages;
   "public/contactSessions": typeof public_contactSessions;
@@ -70,4 +72,5 @@ export declare const internal: FilterApi<
 
 export declare const components: {
   agent: import("@convex-dev/agent/_generated/component.js").ComponentApi<"agent">;
+  rag: import("@convex-dev/rag/_generated/component.js").ComponentApi<"rag">;
 };
