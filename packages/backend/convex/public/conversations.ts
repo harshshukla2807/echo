@@ -1,5 +1,5 @@
 import { mutation, query } from "../_generated/server";
-import { components } from "../_generated/api"
+import { components } from "../_generated/api";
 import { ConvexError, v } from "convex/values";
 import { supportAgent } from "../system/ai/supportAgent";
 import { MessageDoc, saveMessage } from "@convex-dev/agent";
@@ -113,6 +113,13 @@ export const create = mutation({
       });
     }
 
+    const widgetSettings = await ctx.db
+      .query("widgetSettings")
+      .withIndex("by_organization_id", (q) => 
+        q.eq("organizationId", args.organizationId),
+      )
+      .unique();
+
     const { threadId } = await supportAgent.createThread(ctx, {
       userId: args.organizationId,
     });
@@ -121,8 +128,7 @@ export const create = mutation({
       threadId,
       message: {
         role: "assistant",
-        // TODO: Later modify to widget settings' initial message
-        content: "Hello, how can I help you today?",
+        content: widgetSettings?.greetMessage || "Hello, how can I help you today?",
       },
     });
 
