@@ -31,7 +31,7 @@ export const WidgetVoiceScreen = () => {
       <WidgetHeader>
         <div className="flex items-center gap-x-2">
           <Button
-            variant="transparent"
+            variant="ghost"
             size="icon"
             onClick={() => setScreen("selection")}
           >
@@ -41,7 +41,7 @@ export const WidgetVoiceScreen = () => {
         </div>
       </WidgetHeader>
       {transcript.length > 0 ? (
-        <AIConversation className="h-full flex-1">
+        <AIConversation className="h-full">
           <AIConversationContent>
             {transcript.map((message, index) => (
               <AIMessage
