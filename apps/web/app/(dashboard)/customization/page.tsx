@@ -1,7 +1,7 @@
-const page = () => {
-  return (
-    <div>customization</div>
-  )
-}
+import { CustomizationView } from "@/modules/customization/ui/views/customization-view";
 
-export default page
+const Page = () => {
+  return <CustomizationView />
+};
+ 
+export default Page;
