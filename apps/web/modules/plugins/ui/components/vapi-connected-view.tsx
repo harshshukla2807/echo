@@ -51,7 +51,7 @@ export const VapiConnectedView = ({
               </div>
             </div>
 
-            <Button onClick={onDisconnect} size="sm" variant="destructive">
+            <Button onClick={onDisconnect} size="sm" variant="destructive" >
               <UnplugIcon className="mr-2 size-4" />
               Disconnect
             </Button>
